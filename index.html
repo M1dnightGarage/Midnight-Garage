@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Midnight garage</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-glow page-glow-left"></div>
+    <div class="page-glow page-glow-right"></div>
+
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">CarX Photo Garage</p>
+        <h1>Midnight garage</h1>
+        <p class="hero-text">
+          Welcome to my garage, look with your eyes. not your hands.
+        </p>
+      </div>
+
+      <section class="upload-panel" aria-labelledby="upload-heading">
+        <div class="panel-header">
+          <p class="panel-kicker">Quick add</p>
+          <h2 id="upload-heading">Preview a build on this device</h2>
+          <p class="panel-note">
+            For cars that visitors should see online, add your image files to the
+            website and list them in <code>cars-data.js</code>.
+          </p>
+        </div>
+
+        <form id="car-form" class="car-form">
+          <label>
+            Car name
+            <input id="car-name" name="name" type="text" maxlength="60" placeholder="S14 Street Missile" required />
+          </label>
+
+          <label>
+            Category
+            <input id="car-category" name="category" type="text" maxlength="30" placeholder="Drift" required />
+          </label>
+
+          <label>
+            Description
+            <textarea
+              id="car-description"
+              name="description"
+              maxlength="220"
+              rows="4"
+              placeholder="Paint, wheel setup, style notes, or the vibe of the build..."
+              required
+            ></textarea>
+          </label>
+
+          <label class="file-input">
+            Car photo
+            <input id="car-image" name="image" type="file" accept="image/*" required />
+          </label>
+
+          <button type="submit">Add Local Preview</button>
+        </form>
+      </section>
+    </header>
+
+    <main class="content">
+      <section class="toolbar" aria-label="Gallery controls">
+        <div>
+          <p class="section-label">Filter lane</p>
+          <h2>Your lineup</h2>
+        </div>
+        <div id="category-filters" class="category-filters"></div>
+      </section>
+
+      <section id="gallery" class="gallery" aria-live="polite"></section>
+    </main>
+
+    <template id="car-card-template">
+      <article class="car-card">
+        <div class="card-image-wrap">
+          <img class="card-image" alt="" />
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill"></span>
+            <button class="delete-button" type="button" aria-label="Delete car entry">Remove</button>
+          </div>
+          <h3 class="card-title"></h3>
+          <p class="card-description"></p>
+        </div>
+      </article>
+    </template>
+
+    <script src="cars-data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
